@@ -37,7 +37,7 @@ const Header = () => {
         {/* Header Content */}
         <div className='lg:flex'>
             <img
-            className='rounded-md h-80 my-5 min-[320px]:w-auto'
+            className='rounded-md h-80 my-5 min-[320px]:w-auto object-contain'
             src={`${details?.details.thumbnail.domain}/${details?.details.thumbnail.basePath}/10/${details?.details.thumbnail.key}`}
             />
             

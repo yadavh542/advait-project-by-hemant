@@ -8,7 +8,7 @@ const OtherCourse = ({title,subtitle,noOfCourses,image}) => {
 
       
         <img 
-        className='rounded-md h-28 bg-gradient-to-t from-black'
+        className='rounded-md h-28 bg-gradient-to-t from-black object-contain'
         src={image}/>
         
         

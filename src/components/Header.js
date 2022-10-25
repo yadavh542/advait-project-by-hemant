@@ -37,7 +37,7 @@ const Header = () => {
         {/* Header Content */}
         <div className='lg:flex'>
             <img
-            className='rounded-md h-80 my-5 min-[320px]:w-auto object-contain'
+            className='rounded-md h-80 sm:my-5 min-[320px]:w-auto object-contain'
             src={`${details?.details.thumbnail.domain}/${details?.details.thumbnail.basePath}/10/${details?.details.thumbnail.key}`}
             />
             
@@ -52,11 +52,11 @@ const Header = () => {
         <div className='min-[320px]:hidden md:block'>
             <p className='font-semibold mb-2'>Share this series :</p>
 
-            <div className='flex space-x-4'>
-            <i className="bi bi-whatsapp cursor-pointer text-gray-500 hover:text-orange-400 h-8"></i>
-            <i className="bi bi-twitter cursor-pointer text-gray-500 hover:text-orange-400 h-8"></i>
-            <i className="bi bi-facebook cursor-pointer text-gray-500 hover:text-orange-400 h-8"></i>
-            <i className="bi bi-linkedin cursor-pointer text-gray-500 hover:text-orange-400 h-8"></i>
+            <div className='flex '>
+            <i className="bi bi-whatsapp cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
+            <i className="bi bi-twitter cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
+            <i className="bi bi-facebook cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
+            <i className="bi bi-linkedin cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
               
             </div>
         </div>

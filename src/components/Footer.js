@@ -120,14 +120,12 @@ const Footer = () => {
       <hr className="min-[320px]:w-11/12 md:w-4/5 lg:3/4 flex justify-center mx-auto" />
 
       <div className="text-white mt-5 text-sm min-[320px]:ml-7 md:mx-auto md:flex justify-center items-center">
-        <p className="mr-16 min-[320px]:mb-2">Copyright © 2022 PrashantAdvait Foundation</p>
-        <p>
+        <p className="mr-16 min-[320px]:mb-2 md:flex">Copyright © 2022 PrashantAdvait Foundation</p>
+        <p className="min-[320px]:mb-2">
           <span className="hover:text-orange-400 cursor-pointer ">
-            Terms & Conditions
-          </span>{" "}
-          |{" "}
-          <span className="hover:text-orange-400 cursor-pointer">
-            Privacy Policy
+            Terms & Conditions &ensp;
+          </span> | <span className="hover:text-orange-400 cursor-pointer">
+           &ensp; Privacy Policy
           </span>
         </p>
       </div>

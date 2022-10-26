@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     MagnifyingGlassIcon,
     ChevronDownIcon,
@@ -9,6 +9,22 @@ import { useGlobalContext } from '../context';
 const Searchbar = () => {
   const[allSearchOpen, setAllSearchOpen] = useState(false);
   const{toggleBgGray,langEng} = useGlobalContext();
+  const dropdownRef = useRef();
+
+  useEffect(()=>{
+    let handler=(e)=>{
+        if(!dropdownRef.current.contains(e.target)){
+            setAllSearchOpen(false);
+            
+            toggleBgGray();
+        }
+        
+    };
+    document.addEventListener("mousedown",handler);
+    return()=>{
+        document.removeEventListener("mousedown",handler)
+    }
+})
   
 
   const handleAllSearchOpen=(e)=>{
@@ -48,7 +64,7 @@ const Searchbar = () => {
         </div>
 
         {/* Dropdown open */}
-        {allSearchOpen && <Dropdown/>}
+        {allSearchOpen && <Dropdown dropdownRef={dropdownRef}/>}
 
         {/* Search Bar Right - Login*/}
         <div className='flex items-center cursor-pointer '> 

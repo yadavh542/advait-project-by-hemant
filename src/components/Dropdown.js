@@ -6,11 +6,12 @@ import {
 } from '@heroicons/react/24/outline'
 import { useGlobalContext } from '../context';
 
-const Dropdown = () => {
+const Dropdown = ({dropdownRef}) => {
     const[dropdownData, setDropdownData] = useState();
     const[openSubtype, setOpenSubtype] = useState(false);
     const[subtypeData, setSubtypeData] = useState([]);
     const{langEng} = useGlobalContext();
+    
     
 
     useEffect(()=>{
@@ -54,8 +55,11 @@ const Dropdown = () => {
 
     
 
+    
+
   return (
     <div 
+    ref={dropdownRef}
     className={`h-[420px] ${openSubtype?"w-[510px]":"w-[270px]"} absolute left-[124px] top-[100px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex justify-start`}>
         
         {/* Left Dropdown */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     PhoneIcon,
     Bars3Icon,
@@ -14,11 +14,35 @@ const Navbar = () => {
     const[menuOpen, setMenuOpen] = useState(false);
     const{toggleBgGray} = useGlobalContext();
     const{langEng,langHindi,setLangHindi,setLangEng} = useGlobalContext();
+    const menuRef = useRef();
+    
+
+    // Click Outside to Close Popup Function
+
+    useEffect(()=>{
+        let handler=(e)=>{
+            if(!menuRef.current.contains(e.target)){
+                setMenuOpen(false);
+                setLangBoxOpen(false);
+                toggleBgGray();
+            }
+            
+        };
+        document.addEventListener("mousedown",handler);
+        return()=>{
+            document.removeEventListener("mousedown",handler)
+        }
+    })
 
     const handleMenuOpen=(e)=>{
         setMenuOpen(!menuOpen);
         toggleBgGray();
     }
+    const handleLangBoxOpen=(e)=>{
+        setLangBoxOpen(!langBoxOpen);
+        toggleBgGray();
+    }
+
     const handleHindi=(e)=>{
         setLangHindi(true);
         setLangEng(false);
@@ -34,6 +58,7 @@ const Navbar = () => {
         {/* Left Side Nav */}
         <div className='items-center justify-center flex'>
             <img 
+            alt='applogo'
             src='https://acharyaprashant.org/images/ic_aplogo.png'
             className='h-8 w-8 rounded-full my-1 min-[320px]:ml-4 md:ml-7 mr-3 cursor-pointer'
             />
@@ -51,7 +76,7 @@ const Navbar = () => {
             <ul className='text-white min-[320px]:mr-4 md:mr-7 flex justify-center items-center'>
 
                 <div 
-                onClick={e=>setLangBoxOpen(!langBoxOpen)}
+                onClick={handleLangBoxOpen}
                 className='flex px-2 justify-center items-center'>
                     <button className='rounded-sm border-2 text-xs px-1 py-0.5 mr-1'>{langEng?'EN':'HI'}</button>
                     <ChevronDownIcon 
@@ -62,6 +87,7 @@ const Navbar = () => {
                 {/* Language Popup dropdown */}
                 {langBoxOpen && 
                 <div 
+                ref={menuRef}
                 className='h-20 w-24 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md'>
                     <p 
                     onClick={handleEng}
@@ -75,7 +101,7 @@ const Navbar = () => {
                     className='h-5 px-2 cursor-pointer'
                     />
 
-                    <button className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>Donate</button>
+                    <button className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>{langEng?'Donate':'योगदान करें'}</button>
 
                     <Bars3Icon 
                     onClick={handleMenuOpen}
@@ -90,7 +116,7 @@ const Navbar = () => {
                 {/* Right Side Menu Expand Div  */}
 
                 {menuOpen && 
-                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition duration-700 flex'>
+                    <div ref={menuRef} className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex'>
                     <XMarkIcon 
                     onClick={handleMenuOpen} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>

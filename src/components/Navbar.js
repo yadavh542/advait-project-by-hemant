@@ -70,14 +70,14 @@ const Navbar = () => {
                 {/* Right Side Menu Expand Div  */}
 
                 {menuOpen && 
-                    <div className='h-screen min-[320px]:w-[480px] sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition duration-700 flex'>
+                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition duration-700 flex'>
                     <XMarkIcon 
                     onClick={e=>setMenuOpen(!menuOpen)} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>
                     
                     {/* Menu Bar Content */}
 
-                    <div className=' bg-white text-black h-screen min-[320px]:w-[450px] sm:w-[380px]
+                    <div className=' bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
                      shadow-md pt-8 px-2 transition duration-500 overflow-y-auto overflow-x-hidden'>
                         
                         <div className='flex items-center cursor-pointer ml-2'>

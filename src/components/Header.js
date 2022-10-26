@@ -3,9 +3,11 @@ import {
     ArrowLeftIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/outline'
+import { useGlobalContext } from '../context';
 
 const Header = () => {
     const[details, setDetails] = useState();
+    const{langEng} = useGlobalContext();
 
     useEffect(()=>{
 
@@ -50,7 +52,7 @@ const Header = () => {
         {/* Share Buttons */}
 
         <div className='min-[320px]:hidden md:block'>
-            <p className='font-semibold mb-2'>Share this series :</p>
+            <p className='font-semibold mb-2'>{langEng?'Share this series :':'इस श्रृंखला को साझा करें'}</p>
 
             <div className='flex '>
             <i className="bi bi-whatsapp cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>

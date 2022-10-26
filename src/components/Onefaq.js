@@ -13,7 +13,7 @@ const Onefaq = ({question,answer}) => {
             <h2 className='font-bold text-gray-600'>{question}</h2>
             {open?<ChevronUpIcon className='h-5 text-gray-500 text-sm'/>:<ChevronDownIcon className='h-5 text-gray-500 text-sm'/>}
         </div>
-        { open && <div className='mb-8'><p>{answer}</p></div>}
+        { open && <div className='mb-8'>{answer}</div>}
         <hr/>
     </div>
   )

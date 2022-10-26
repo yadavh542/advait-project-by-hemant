@@ -4,11 +4,13 @@ import {
     ChevronRightIcon,
 
 } from '@heroicons/react/24/outline'
+import { useGlobalContext } from '../context';
 
 const Dropdown = () => {
     const[dropdownData, setDropdownData] = useState();
     const[openSubtype, setOpenSubtype] = useState(false);
     const[subtypeData, setSubtypeData] = useState([]);
+    const{langEng} = useGlobalContext();
     
 
     useEffect(()=>{
@@ -59,14 +61,14 @@ const Dropdown = () => {
         {/* Left Dropdown */}
         <div className='h-[420px] w-[270px]'> 
             <div className='pt-6 pl-4 w-[270px]'>
-            <p className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>All</p>
+            <p className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?'All':'सभी'}</p>
 
             {dropdownData && dropdownData[0]?.map(d=>(
                 <div className='text-gray-500 px-4 py-2 hover:bg-gray-100 hover:text-orange-500 cursor-pointer flex justify-between'> 
                 <p 
                 key={d.tagId}
                 onMouseEnter={e=>handleSelectedDropdown(d.name.english)} 
-                className='font-semibold'>{d.name.english}</p>
+                className='font-semibold'>{langEng?d.name.english:d.name.hindi}</p>
                 {d.name.english==="Vedant - Bhagavad Gita"?"" : <ChevronRightIcon className='h-4'/>}
                 </div>
             ))}
@@ -81,7 +83,7 @@ const Dropdown = () => {
             <div className='pt-6 w-full ml-2'>
             
             {subtypeData && subtypeData?.map(d=>(
-                <p key={d.name.english} className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{d.name.english}</p>
+                <p key={d.name.english} className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?d.name.english:d.name.hindi}</p>
             ))
             
             }

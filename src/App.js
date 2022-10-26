@@ -7,10 +7,14 @@ import Courses from './components/Courses';
 import OtherCourses from './components/OtherCourses';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
+import { useGlobalContext } from './context';
 
 function App() {
+
+  const {bgGray} = useGlobalContext();
+
   return (
-    <div className="App">
+    <div className={`App ${bgGray && "bg-gray-300"}`}>
         <Navbar/>
         <Searchbar/>
         <Header/>

@@ -7,10 +7,26 @@ import {
     UserCircleIcon,
 } from '@heroicons/react/24/outline'
 import SingleMenu from './SingleMenu';
+import { useGlobalContext } from '../context';
 
 const Navbar = () => {
     const[langBoxOpen, setLangBoxOpen] = useState(false);
     const[menuOpen, setMenuOpen] = useState(false);
+    const{toggleBgGray} = useGlobalContext();
+    const{langEng,langHindi,setLangHindi,setLangEng} = useGlobalContext();
+
+    const handleMenuOpen=(e)=>{
+        setMenuOpen(!menuOpen);
+        toggleBgGray();
+    }
+    const handleHindi=(e)=>{
+        setLangHindi(true);
+        setLangEng(false);
+    }
+    const handleEng=(e)=>{
+        setLangEng(true);
+        setLangHindi(false);
+    }
 
   return (
     <div className='flex bg-orange-700 justify-between h-auto'>
@@ -23,10 +39,10 @@ const Navbar = () => {
             />
 
             <ul className='text-white font-semibold min-[320px]:hidden md:flex'>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>Home</li>
-                <li className='bg-orange-500 px-4 py-3 cursor-pointer'>Video Courses</li>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>His Books</li>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>Donate</li>
+                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Home':'होम'}</li>
+                <li className='bg-orange-500 px-4 py-3 cursor-pointer'>{langEng?'Video Courses':'वीडियो कोर्सेज'}</li>
+                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'His Books':'उनकी पुस्तकें'}</li>
+                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Donate':'योगदान करें'}</li>
             </ul>
         </div>
 
@@ -37,7 +53,7 @@ const Navbar = () => {
                 <div 
                 onClick={e=>setLangBoxOpen(!langBoxOpen)}
                 className='flex px-2 justify-center items-center'>
-                    <button className='rounded-sm border-2 text-xs px-1 py-0.5 mr-1'>EN</button>
+                    <button className='rounded-sm border-2 text-xs px-1 py-0.5 mr-1'>{langEng?'EN':'HI'}</button>
                     <ChevronDownIcon 
                     className='h-5 text-white font-bold cursor-pointer'
                     />
@@ -47,8 +63,12 @@ const Navbar = () => {
                 {langBoxOpen && 
                 <div 
                 className='h-20 w-24 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md'>
-                    <p className='p-2 hover:bg-gray-200 cursor-pointer text-orange-500'>English</p>
-                    <p className='p-2 hover:bg-gray-200 cursor-pointer text-black'>Hindi</p>
+                    <p 
+                    onClick={handleEng}
+                    className={`p-2 hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>English</p>
+                    <p 
+                    onClick={handleHindi}
+                    className={`p-2 hover:bg-gray-200 cursor-pointer ${langHindi? "text-orange-500":"text-black"}`}>Hindi</p>
                 </div>}
 
                     <PhoneIcon
@@ -58,21 +78,21 @@ const Navbar = () => {
                     <button className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>Donate</button>
 
                     <Bars3Icon 
-                    onClick={e=>setMenuOpen(!menuOpen)}
+                    onClick={handleMenuOpen}
                     className='h-5 pl-2 cursor-pointer font-bold'
                     />
 
 
                 <li 
-                onClick={e=>setMenuOpen(!menuOpen)}
-                className='px-2 cursor-pointer min-[320px]:hidden md:flex'>Menu</li>
+                onClick={handleMenuOpen}
+                className='px-2 cursor-pointer min-[320px]:hidden md:flex'>{langEng?'Menu':'मेन्यू'}</li>
 
                 {/* Right Side Menu Expand Div  */}
 
                 {menuOpen && 
                     <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition duration-700 flex'>
                     <XMarkIcon 
-                    onClick={e=>setMenuOpen(!menuOpen)} 
+                    onClick={handleMenuOpen} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>
                     
                     {/* Menu Bar Content */}
@@ -82,7 +102,7 @@ const Navbar = () => {
                         
                         <div className='flex items-center cursor-pointer ml-2'>
                             <UserCircleIcon className='text-orange-500 hover:text-orange-700 h-10'/>
-                            <p className='text-orange-500 hover:text-orange-700 text-lg font-semibold ml-2'>Login</p>
+                            <p className='text-orange-500 hover:text-orange-700 text-lg font-semibold ml-2'>{langEng?'Login':'लॉगिन करें'}</p>
                         </div> <br/>
                         <hr/>
 
@@ -111,7 +131,7 @@ const Navbar = () => {
                         <SingleMenu title="Other Streams"/>
                         <SingleMenu title="Life Questions"/><br/>
                         <hr/>
-                        <SingleMenu title="Technical Support"/>
+                        <SingleMenu title="Technical Support"/><br/>
 
                     </div>
 

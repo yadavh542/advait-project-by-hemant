@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     MagnifyingGlassIcon,
     ChevronDownIcon,
 } from '@heroicons/react/24/outline'
+import Dropdown from './Dropdown';
 
 const Searchbar = () => {
+  const[allSearchOpen, setAllSearchOpen] = useState(false);
+  
   return (
     <div className='shadow flex justify-between py-2 items-center z-50'>
         {/* Searrch Bar Left */}
@@ -12,11 +15,16 @@ const Searchbar = () => {
             <img
             className='h-6 min-[320px]:ml-4 md:ml-7 cursor-pointer md:mr-5'
             src='https://acharyaprashant.org/images/ic_courses.png'
+            alt='courses'
             />
 
             {/* Search Bar */}
             <div className='flex justify-center items-center min-[320px]:hidden md:flex'>  
-            <div className='text-xs font-semibold text-gray-500 flex items-center border-2 px-3 py-2 cursor-pointer'>
+
+            {/* Dropdown All*/}
+            <div 
+            onClick={e=>setAllSearchOpen(!allSearchOpen)}
+            className='text-xs font-semibold text-gray-500 flex items-center border-2 px-3 py-2 cursor-pointer'>
                 <p>All</p>
                 <ChevronDownIcon className='h-4 ml-0.5'/>
             </div>
@@ -30,6 +38,9 @@ const Searchbar = () => {
             </div>
             </div>
         </div>
+
+        {/* Dropdown open */}
+        {allSearchOpen && <Dropdown/>}
 
         {/* Search Bar Right - Login*/}
         <div className='flex items-center cursor-pointer '> 

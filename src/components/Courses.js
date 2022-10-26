@@ -15,6 +15,19 @@ const Courses = () => {
         fetchDetails();
     },[])
 
+    const convertToHour=(decimalHours)=>{ 
+    const n = new Date(0,0);
+    n.setMinutes(+Math.round(decimalHours * 60)); 
+    const hours = n.getHours()
+    return hours;
+  }
+    const convertToMinute=(decimalMinutes)=>{
+    const n = new Date(0,0);
+    n.setMinutes(+Math.round(decimalMinutes * 60)); 
+    const minutes = n.getMinutes()
+    return minutes;
+    }
+
   return (
     <div className='min-[320px]:mx-4 md:mx-7 mt-8'>
         <h1 className='text-2xl font-semibold text-gray-600 mb-4'>Courses ({details?.details.coursesCount})</h1>
@@ -29,7 +42,8 @@ const Courses = () => {
             subtitle={c.subtitle}
             amount={c.amount}
             language={c.language}
-            courseHours={c.courseHours}
+            courseHours={convertToHour(c.courseHours)}
+            courseMinutes={convertToMinute(c.courseHours)}
             />
             
         ))}

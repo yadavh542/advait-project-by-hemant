@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
 
-const Course = ({title,subtitle,courseHours,amount,language,courseNo,courseMinutes}) => {
+const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes}) => {
 
   const{langEng} = useGlobalContext();
 
@@ -19,7 +19,7 @@ const Course = ({title,subtitle,courseHours,amount,language,courseNo,courseMinut
           
             <p className='text-gray-500 mb-2'>{langEng?'Contributions':'सहयोग राशि'}: <span><i class="bi bi-currency-rupee"></i></span>{amount}</p>
                       
-            <button className='bg-blue-200 py-1 px-2 rounded-md text-gray-800 text-xs mb-2'>{language}</button>
+            <button className='bg-blue-200 py-1 px-2 rounded-md text-gray-800 text-xs mb-2'>{langEng?"Hindi":"हिंदी"}</button>
             <p className='text-gray-300'><span className='text-xs font-bold text-orange-500 hover:text-orange-700'>{langEng?'ADD TO CART':'कार्ट में जोड़ें'}</span>  |  <span className='text-xs font-bold text-orange-500 hover:text-orange-700'>{langEng?'ENROL':'एनरोल करें'}</span></p>
             
         </div>

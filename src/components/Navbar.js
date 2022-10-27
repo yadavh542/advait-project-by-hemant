@@ -46,10 +46,14 @@ const Navbar = () => {
     const handleHindi=(e)=>{
         setLangHindi(true);
         setLangEng(false);
+        setLangBoxOpen(false);
+        toggleBgGray();
     }
     const handleEng=(e)=>{
         setLangEng(true);
         setLangHindi(false);
+        setLangBoxOpen(false);
+        toggleBgGray();
     }
 
   return (
@@ -132,32 +136,32 @@ const Navbar = () => {
                         </div> <br/>
                         <hr/>
 
-                        <SingleMenu title="Video Courses"/>
-                        <SingleMenu title="His Books"/>
-                        <SingleMenu title="AP Circle"/>
-                        <SingleMenu title="Contact Us"/>
-                        <SingleMenu title="Donate"/><br/>
+                        <SingleMenu title={langEng?"Video Courses":'वीडिओ कोर्सेस'}/>
+                        <SingleMenu title={langEng?'His Books':'उनकी पुस्तकें'}/>
+                        <SingleMenu title={langEng?'AP Circle':'ए.पी. सर्किल'}/>
+                        <SingleMenu title={langEng?"Contact Us":"संपर्क करें "}/>
+                        <SingleMenu title={langEng?"Donate":"योगदान करें"}/><br/>
 
                         <hr/>
-                        <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>MORE</h2>
-                        <SingleMenu title="Prashant Advait Foundation"/>
-                        <SingleMenu title="Vedant Mahotsav"/>
-                        <SingleMenu title="Gita Course"/>
-                        <SingleMenu title="Tals with Acharya Prashant"/>
-                        <SingleMenu title="Ghar Ghar Upnishad"/>
-                        <SingleMenu title="About Acharya Prashant"/>
-                        <SingleMenu title="Media and Public Interaction"/><br/>
+                        <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>{langEng?'MORE':'अधिक जाने'}</h2>
+                        <SingleMenu title={langEng?"Prashant Advait Foundation":"प्रशांतअद्वैत संस्था"}/>
+                        <SingleMenu title={langEng?'Vedant Mahotsav':'वेदांत महोत्सव'}/>
+                        <SingleMenu title={langEng?'Geeta Course':'गीता कोर्स'}/>
+                        <SingleMenu title={langEng?'Talks with Acharya Prashant':'आचार्य प्रशांत संग संवाद'}/>
+                        <SingleMenu title={langEng?'Ghar Ghar Upnishad':'घर घर उपनिषद'}/>
+                        <SingleMenu title={langEng?'About Acharya Prashant':'आचार्य प्रशांत के बारे में'}/>
+                        <SingleMenu title={langEng? 'Media and Public Interaction':'मीडिया व प्रेस प्रकाशनी'}/><br/>
 
                         <hr/>
-                        <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>EXPLORE CATEGORIES</h2>
-                        <SingleMenu title="Vedant - Upnishads"/>
-                        <SingleMenu title="Vedant - Bhagavad Gita"/>
-                        <SingleMenu title="Other Scriptures"/>
-                        <SingleMenu title="Saints and Masters"/>
-                        <SingleMenu title="Other Streams"/>
-                        <SingleMenu title="Life Questions"/><br/>
+                        <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>{langEng?"EXPLORE CATEGORIES":"विषयों को देखें"}</h2>
+                        <SingleMenu title={langEng?"Vedant - Upnishads":"वेदांत - उपनिषद"}/>
+                        <SingleMenu title={langEng?"Vedant - Bhagavad Gita":"वेदांत - श्रीमद्भगवद्गीता"}/>
+                        <SingleMenu title={langEng?"Other Scriptures":"अन्य ग्रन्थ"}/>
+                        <SingleMenu title={langEng?"Saints and Masters":"संत और दार्शनिक"}/>
+                        <SingleMenu title={langEng?"Other Streams":"विविध धाराएँ "}/>
+                        <SingleMenu title={langEng?"Life Questions":"जीवन सम्बंधित प्रश्न"}/><br/>
                         <hr/>
-                        <SingleMenu title="Technical Support"/><br/>
+                        <SingleMenu title={langEng?"Technical Support":"तकनिकी सहायता"}/><br/>
 
                     </div>
 

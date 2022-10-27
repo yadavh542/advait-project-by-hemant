@@ -43,7 +43,7 @@ const Courses = () => {
             title={c.title}
             subtitle={c.subtitle}
             amount={c.amount}
-            language={c.language}
+            // language={c.language}
             courseHours={convertToHour(c.courseHours)}
             courseMinutes={convertToMinute(c.courseHours)}
             />

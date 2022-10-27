@@ -4,10 +4,21 @@ import {
     ChevronRightIcon,
 } from '@heroicons/react/24/outline'
 import { useGlobalContext } from '../context';
+import {
+    WhatsappShareButton,
+    WhatsappIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    FacebookShareButton,
+    FacebookIcon,
+    LinkedinShareButton,
+    LinkedinIcon,
+} from "react-share";
 
 const Header = () => {
     const[details, setDetails] = useState();
     const{langEng} = useGlobalContext();
+    const shareUrl='https://acharyaprashant.org/en/courses/series/course-series-eeb9d3';
 
     useEffect(()=>{
 
@@ -26,7 +37,7 @@ const Header = () => {
     <div className='min-[320px]:mx-4 md:mx-7'>
         
         <div className='min-[320px]:hidden md:flex text-xs font-semibold my-5'> 
-        <p>Home</p>
+        <p>{langEng?'Home':'होम'}</p>
         <ChevronRightIcon className='h-4'/>
         <p>{details?.details.title}</p>
         </div>
@@ -54,11 +65,21 @@ const Header = () => {
         <div className='min-[320px]:hidden md:block'>
             <p className='font-semibold mb-2'>{langEng?'Share this series :':'इस श्रृंखला को साझा करें'}</p>
 
-            <div className='flex '>
-            <i className="bi bi-whatsapp cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
-            <i className="bi bi-twitter cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
-            <i className="bi bi-facebook cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
-            <i className="bi bi-linkedin cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i>
+            <div className='flex space-x-4'>
+
+            <WhatsappShareButton url={shareUrl}>
+                <WhatsappIcon size={30} round={true}/>
+            </WhatsappShareButton>
+            {/* <i className="bi bi-whatsapp cursor-pointer text-gray-800 hover:text-orange-400 bg-gray-300 p-1 rounded-full mr-2"></i> */}
+            <TwitterShareButton url={shareUrl}>
+                <TwitterIcon size={30} round={true}/>
+            </TwitterShareButton>
+            <FacebookShareButton url={shareUrl}>
+                <FacebookIcon size={30} round={true}/>
+            </FacebookShareButton>
+            <LinkedinShareButton url={shareUrl}>
+                <LinkedinIcon size={30} round={true}/>
+            </LinkedinShareButton>
               
             </div>
         </div>

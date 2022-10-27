@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../context";
 
 
 const Footer = () => {
   const{langEng} = useGlobalContext();
+
+  function handlePlayStore() {
+    
+      setTimeout(() => {
+        // 👇️ redirects to an external URL
+        window.location.replace('https://play.google.com/store/apps/details?id=org.acharyaprashant.apbooks');
+      }, 500);
+  
+      
+  }
+
+  function handleAppStore() {
+    
+    setTimeout(() => {
+      // 👇️ redirects to an external URL
+      window.location.replace('https://apps.apple.com/in/app/acharya-prashant/id1603611866');
+    }, 500);
+
+    
+}
+
+
   return (
     <div className="bg-slate-900 pb-16">
       <div className="p-8 text-white mb-10 grid min-[320px]:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
@@ -80,11 +102,13 @@ const Footer = () => {
           </div>
           <br />
           <img
+            onClick={handlePlayStore}
             className="h-10 cursor-pointer border-2 border-white rounded-md"
             src="https://acharyaprashant.org/images/ic_googleplay.png"
           />
           <br />
           <img
+            onClick={handleAppStore}
             className="h-10 cursor-pointer border-2 border-white rounded-md"
             src="https://acharyaprashant.org/images/ic_appstore.png"
           />

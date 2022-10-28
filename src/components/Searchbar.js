@@ -99,7 +99,7 @@ const Searchbar = () => {
             <input
             value={searchInput}
             onChange={(e)=>setSearchInput(e.target.value)}
-            className='px-2 py-1 outline-none flex-1'
+            className={`px-2 py-1 outline-none flex-1 ${bgGray && "bg-gray-300"}`}
             type='text'
             placeholder={langEng?'Search for courses': 'कोर्स खोजें'}
             />

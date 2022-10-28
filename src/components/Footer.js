@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../context";
+import {
+  EmailShareButton,
+  EmailIcon,
+} from "react-share";
 
 
 const Footer = () => {
   const{langEng} = useGlobalContext();
+  const emailShareUrl = "support@advait.org.in";
+  const title = "Advait Foundation";
 
   function handlePlayStore() {
     
@@ -154,32 +160,54 @@ const Footer = () => {
         <div>
           <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'CONTACT US':'सम्पर्क करें'}</h1>
           <br />
-          <p className="hover:text-orange-400 cursor-pointer">
-            <span>
-              <i className="bi bi-envelope cursor-pointer hover:text-orange-400 mr-1.5"></i>
+
+          {/* Send Email to */}
+
+          <a href="mailto:support@advait.org.in" className="flex">
+          <span>
+              <i className="bi bi-envelope cursor-pointer mr-1.5"></i>  
             </span>
+          <p className="hover:text-orange-500 cursor-pointer">
             support@advait.org.in
           </p>
-          <br />
-          <p className="hover:text-orange-400 cursor-pointer">
+          </a>
+          <br/>
+
+          {/* Chat on Whatsapp */}
+
+          <span className="flex">
+          <i className="bi bi-whatsapp cursor-pointer mr-1.5"></i>
+          <p 
+          onClick={()=>window.open('https://api.whatsapp.com/send/?phone=%2B919643750710&text&type=phone_number&app_absent=0','_blank')}
+          className="hover:text-orange-500 cursor-pointer">
+             
             <span>
-              <i className="bi bi-whatsapp cursor-pointer hover:text-orange-400 mr-1.5"></i>
+            +91 9650585100</span>
+          </p></span>
+          <br />
+
+          {/* phone call */}
+
+          <a href="tel:+919650585100" className="flex"> 
+          <span>
+              <i className="bi bi-telephone-fill cursor-pointer mr-1.5"></i>
             </span>
+          <p className="hover:text-orange-400 cursor-pointer">
+            
             +91 9650585100
           </p>
+          </a>
+
           <br />
-          <p className="hover:text-orange-400 cursor-pointer">
-            <span>
-              <i className="bi bi-telephone-fill cursor-pointer hover:text-orange-400 mr-1.5"></i>
-            </span>
-            +91 9650585100
-          </p>
-          <br />
+
+          {/* Fill Form */}
+
           <button 
           onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/enquiry`)}
           className="px-2 py-0.5 font-bold text-sm hover:text-orange-400 border-2 hover:border-orange-400">
             {langEng?'Fill Form to Connect':'जुड़ने के लिए फ़ॉर्म भरें'}
           </button>
+
         </div>
       </div>
 

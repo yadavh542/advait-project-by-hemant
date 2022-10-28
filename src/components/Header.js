@@ -37,13 +37,18 @@ const Header = () => {
     <div className='min-[320px]:mx-4 md:mx-7'>
         
         <div className='min-[320px]:hidden md:flex text-xs font-semibold my-5'> 
-        <p>{langEng?'Home':'होम'}</p>
+        <p
+         onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/home`)}
+         className='cursor-pointer'
+        >{langEng?'Home':'होम'}</p>
         <ChevronRightIcon className='h-4'/>
         <p>{details?.details.title}</p>
         </div>
 
         <div className='flex items-center mt-4'>
-        <ArrowLeftIcon className='text-orange-400 h-6 md:hidden font-bold'/>
+        <ArrowLeftIcon 
+        onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
+        className='text-orange-400 h-6 md:hidden font-bold cursor-pointer'/>
         <h1 className='text-2xl font-bold ml-2'>{details?.details.title}</h1>
         </div>
 

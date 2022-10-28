@@ -9,6 +9,7 @@ import {
 import SingleMenu from './SingleMenu';
 import { useGlobalContext } from '../context';
 
+
 const Navbar = () => {
     const[langBoxOpen, setLangBoxOpen] = useState(false);
     const[menuOpen, setMenuOpen] = useState(false);
@@ -62,16 +63,26 @@ const Navbar = () => {
         {/* Left Side Nav */}
         <div className='items-center justify-center flex'>
             <img 
+            onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/home`)}
             alt='applogo'
             src='https://acharyaprashant.org/images/ic_aplogo.png'
             className='h-8 w-8 rounded-full my-1 min-[320px]:ml-4 md:ml-7 mr-3 cursor-pointer'
             />
 
             <ul className='text-white font-semibold min-[320px]:hidden md:flex'>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Home':'होम'}</li>
-                <li className='bg-orange-500 px-4 py-3 cursor-pointer'>{langEng?'Video Courses':'वीडियो कोर्सेज'}</li>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'His Books':'उनकी पुस्तकें'}</li>
-                <li className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Donate':'योगदान करें'}</li>
+                <li 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/home`)}
+                className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Home':'होम'}
+                </li>
+                <li 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
+                className='bg-orange-500 px-4 py-3 cursor-pointer'>{langEng?'Video Courses':'वीडियो कोर्सेज'}</li>
+                <li 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/books`)}
+                className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'His Books':'उनकी पुस्तकें'}</li>
+                <li 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/contribute`)}
+                className='px-4 py-3 cursor-pointer hover:bg-orange-500'>{langEng?'Donate':'योगदान करें'}</li>
             </ul>
         </div>
 
@@ -102,10 +113,13 @@ const Navbar = () => {
                 </div>}
 
                     <PhoneIcon
+                    onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/enquiry`)}
                     className='h-5 px-2 cursor-pointer'
                     />
 
-                    <button className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>{langEng?'Donate':'योगदान करें'}</button>
+                    <button 
+                    onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/contribute`)}
+                    className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>{langEng?'Donate':'योगदान करें'}</button>
 
                     <Bars3Icon 
                     onClick={handleMenuOpen}
@@ -120,14 +134,14 @@ const Navbar = () => {
                 {/* Right Side Menu Expand Div  */}
 
                 {menuOpen && 
-                    <div ref={menuRef} className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex'>
+                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex'>
                     <XMarkIcon 
                     onClick={handleMenuOpen} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>
                     
                     {/* Menu Bar Content */}
 
-                    <div className=' bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
+                    <div ref={menuRef} className=' bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
                      shadow-md pt-8 px-2 transition duration-500 overflow-y-auto overflow-x-hidden'>
                         
                         <div className='flex items-center cursor-pointer ml-2'>

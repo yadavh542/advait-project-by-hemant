@@ -26,6 +26,8 @@ const AppProvider = ({children}) => {
     const [bgGray, setBgGray]= useState(false);
     const [langEng,setLangEng] = useState(true);
     const [langHindi,setLangHindi] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
+    const[searchOnPhone,setSearchOnPhone] = useState(false);
 
     // useEffect(() => {
     //     localStorage.setItem("mode",JSON.stringify(dark));
@@ -37,7 +39,11 @@ const AppProvider = ({children}) => {
    }
 
 
-    return <AppContext.Provider value={{bgGray, setBgGray, toggleBgGray, langEng, setLangEng, langHindi, setLangHindi }}>
+    return <AppContext.Provider 
+    value={{bgGray, setBgGray, toggleBgGray, langEng, setLangEng, langHindi, setLangHindi,
+    searchInput,setSearchInput,
+    searchOnPhone,setSearchOnPhone,
+    }}>
     {children}
     </AppContext.Provider>
 };

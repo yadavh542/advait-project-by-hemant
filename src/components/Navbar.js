@@ -93,9 +93,9 @@ const Navbar = () => {
                 <div 
                 onClick={handleLangBoxOpen}
                 className='flex px-2 justify-center items-center'>
-                    <button className='rounded-sm border-2 text-xs px-1 py-0.5 mr-1'>{langEng?'EN':'HI'}</button>
+                    <button className='rounded-md border-2 text-xs px-0.5 py-0.2 mr-1'>{langEng?'EN':'HI'}</button>
                     <ChevronDownIcon 
-                    className='h-5 text-white font-bold cursor-pointer'
+                    className='h-4 text-white font-bold cursor-pointer'
                     />
                 </div>
 
@@ -103,18 +103,18 @@ const Navbar = () => {
                 {langBoxOpen && 
                 <div 
                 ref={menuRef}
-                className='h-20 w-24 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md'>
+                className='h-24 w-21 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center'>
                     <p 
                     onClick={handleEng}
-                    className={`p-2 hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>English</p>
+                    className={`py-2 px-5 hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>English</p>
                     <p 
                     onClick={handleHindi}
-                    className={`p-2 hover:bg-gray-200 cursor-pointer ${langHindi? "text-orange-500":"text-black"}`}>Hindi</p>
+                    className={`px-6 py-2 hover:bg-gray-200 cursor-pointer ${langHindi? "text-orange-500":"text-black"}`}>हिंदी &ensp;</p>
                 </div>}
 
                     <PhoneIcon
                     onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/enquiry`)}
-                    className='h-5 px-2 cursor-pointer'
+                    className='h-4 px-2 cursor-pointer'
                     />
 
                     <button 
@@ -129,7 +129,7 @@ const Navbar = () => {
 
                 <li 
                 onClick={handleMenuOpen}
-                className='px-2 cursor-pointer min-[320px]:hidden md:flex'>{langEng?'Menu':'मेन्यू'}</li>
+                className='px-2 text-sm cursor-pointer min-[320px]:hidden md:flex'>{langEng?'Menu':'मेन्यू'}</li>
 
                 {/* Right Side Menu Expand Div  */}
 
@@ -144,38 +144,40 @@ const Navbar = () => {
                     <div ref={menuRef} className=' bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
                      shadow-md pt-8 px-2 transition duration-500 overflow-y-auto overflow-x-hidden'>
                         
-                        <div className='flex items-center cursor-pointer ml-2'>
-                            <UserCircleIcon className='text-orange-500 hover:text-orange-700 h-10'/>
-                            <p className='text-orange-500 hover:text-orange-700 text-lg font-semibold ml-2'>{langEng?'Login':'लॉगिन करें'}</p>
+                        <div 
+                        onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/login?page=https%3A%2F%2Facharyaprashant.org%2Fhi%2Fcourses%2Fseries%2Fcourse-series-eeb9d3`)}
+                        className='flex items-center cursor-pointer ml-2 text-orange-500 hover:text-orange-700'>
+                            <UserCircleIcon className=' h-10'/>
+                            <p className='text-lg font-semibold ml-2'>{langEng?'Login':'लॉगिन करें'}</p>
                         </div> <br/>
                         <hr/>
 
-                        <SingleMenu title={langEng?"Video Courses":'वीडिओ कोर्सेस'}/>
-                        <SingleMenu title={langEng?'His Books':'उनकी पुस्तकें'}/>
-                        <SingleMenu title={langEng?'AP Circle':'ए.पी. सर्किल'}/>
-                        <SingleMenu title={langEng?"Contact Us":"संपर्क करें "}/>
-                        <SingleMenu title={langEng?"Donate":"योगदान करें"}/><br/>
+                        <SingleMenu linkName={'courses'} title={langEng?"Video Courses":'वीडिओ कोर्सेस'}/>
+                        <SingleMenu linkName={'books'} title={langEng?'His Books':'उनकी पुस्तकें'}/>
+                        <SingleMenu linkName={'circle'} title={langEng?'AP Circle':'ए.पी. सर्किल'}/>
+                        <SingleMenu linkName={'enquiry'} title={langEng?"Contact Us":"संपर्क करें "}/>
+                        <SingleMenu linkName={'contribute'} title={langEng?"Donate":"योगदान करें"}/><br/>
 
                         <hr/>
                         <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>{langEng?'MORE':'अधिक जाने'}</h2>
-                        <SingleMenu title={langEng?"Prashant Advait Foundation":"प्रशांतअद्वैत संस्था"}/>
-                        <SingleMenu title={langEng?'Vedant Mahotsav':'वेदांत महोत्सव'}/>
-                        <SingleMenu title={langEng?'Geeta Course':'गीता कोर्स'}/>
-                        <SingleMenu title={langEng?'Talks with Acharya Prashant':'आचार्य प्रशांत संग संवाद'}/>
-                        <SingleMenu title={langEng?'Ghar Ghar Upnishad':'घर घर उपनिषद'}/>
-                        <SingleMenu title={langEng?'About Acharya Prashant':'आचार्य प्रशांत के बारे में'}/>
-                        <SingleMenu title={langEng? 'Media and Public Interaction':'मीडिया व प्रेस प्रकाशनी'}/><br/>
+                        <SingleMenu linkName={'prashantadvait-foundation'} title={langEng?"Prashant Advait Foundation":"प्रशांतअद्वैत संस्था"}/>
+                        <SingleMenu linkName={'camps'} title={langEng?'Vedant Mahotsav':'वेदांत महोत्सव'}/>
+                        <SingleMenu linkName={'online-courses'} title={langEng?'Geeta Course':'गीता कोर्स'}/>
+                        <SingleMenu linkName={'invite'} title={langEng?'Talks with Acharya Prashant':'आचार्य प्रशांत संग संवाद'}/>
+                        <SingleMenu linkName={'vedant'} title={langEng?'Ghar Ghar Upnishad':'घर घर उपनिषद'}/>
+                        <SingleMenu linkName={'ap-intro'} title={langEng?'About Acharya Prashant':'आचार्य प्रशांत के बारे में'}/>
+                        <SingleMenu linkName={'media'} title={langEng? 'Media and Public Interaction':'मीडिया व प्रेस प्रकाशनी'}/><br/>
 
                         <hr/>
                         <h2 className='text-sm font-bold px-4 py-2 text-gray-600'>{langEng?"EXPLORE CATEGORIES":"विषयों को देखें"}</h2>
-                        <SingleMenu title={langEng?"Vedant - Upnishads":"वेदांत - उपनिषद"}/>
-                        <SingleMenu title={langEng?"Vedant - Bhagavad Gita":"वेदांत - श्रीमद्भगवद्गीता"}/>
-                        <SingleMenu title={langEng?"Other Scriptures":"अन्य ग्रन्थ"}/>
-                        <SingleMenu title={langEng?"Saints and Masters":"संत और दार्शनिक"}/>
-                        <SingleMenu title={langEng?"Other Streams":"विविध धाराएँ "}/>
-                        <SingleMenu title={langEng?"Life Questions":"जीवन सम्बंधित प्रश्न"}/><br/>
+                        <SingleMenu linkName={'courses/tags/1'} title={langEng?"Vedant - Upnishads":"वेदांत - उपनिषद"}/>
+                        <SingleMenu linkName={'courses/tags/2'} title={langEng?"Vedant - Bhagavad Gita":"वेदांत - श्रीमद्भगवद्गीता"}/>
+                        <SingleMenu linkName={'courses/tags/3'} title={langEng?"Other Scriptures":"अन्य ग्रन्थ"}/>
+                        <SingleMenu linkName={'courses/tags/4'} title={langEng?"Saints and Masters":"संत और दार्शनिक"}/>
+                        <SingleMenu linkName={'courses/tags/5'} title={langEng?"Other Streams":"विविध धाराएँ "}/>
+                        <SingleMenu linkName={'courses/tags/6'} title={langEng?"Life Questions":"जीवन सम्बंधित प्रश्न"}/><br/>
                         <hr/>
-                        <SingleMenu title={langEng?"Technical Support":"तकनिकी सहायता"}/><br/>
+                        <SingleMenu linkName={'technical-support'} title={langEng?"Technical Support":"तकनिकी सहायता"}/><br/>
 
                     </div>
 

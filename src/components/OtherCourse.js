@@ -1,10 +1,12 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 
-const OtherCourse = ({ title, subtitle, noOfCourses, image }) => {
+const OtherCourse = ({ title, subtitle, noOfCourses, image, seriesId }) => {
   const{langEng} =useGlobalContext();
   return (
-    <div className="hover:bg-gray-200 rounded-md min-[320px]:w-full cursor-pointer mr-5 mb-2">
+    <div 
+    onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/series/${seriesId}`)}
+    className="hover:bg-gray-200 rounded-md min-[320px]:w-full cursor-pointer mr-5 mb-2">
       <div className="px-4 py-1 h-32 flex">
         <img className="rounded-md w-36 object-contain" src={image} />
 

@@ -27,6 +27,7 @@ const OtherCourses = () => {
             details && details?.relatedContent.map((r)=>(
               <OtherCourse
               title={r.title}
+              seriesId={r.id}
               subtitle={r.subtitle}
               noOfCourses={r.coursesCount}
               image={`${r.thumbnail.domain}/${r.thumbnail.basePath}/10/${r.thumbnail.key}`}

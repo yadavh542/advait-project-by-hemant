@@ -39,6 +39,7 @@ const Courses = () => {
             
             <Course 
             key={c.id}
+            idName={c.id}
             courseNo={i+1}
             title={c.title}
             subtitle={c.subtitle}

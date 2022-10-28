@@ -65,10 +65,14 @@ const Dropdown = ({dropdownRef}) => {
         {/* Left Dropdown */}
         <div className='h-[420px] w-[270px]'> 
             <div className='pt-6 pl-4 w-[270px]'>
-            <p className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?'All':'सभी'}</p>
+            <p 
+            onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
+            className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?'All':'सभी'}</p>
 
             {dropdownData && dropdownData[0]?.map(d=>(
-                <div className='text-gray-500 px-4 py-2 hover:bg-gray-100 hover:text-orange-500 cursor-pointer flex justify-between'> 
+                <div 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/tags/${d.tagId}`)}
+                className='text-gray-500 px-4 py-2 hover:bg-gray-100 hover:text-orange-500 cursor-pointer flex justify-between'> 
                 <p 
                 key={d.tagId}
                 onMouseEnter={e=>handleSelectedDropdown(d.name.english)} 
@@ -87,7 +91,9 @@ const Dropdown = ({dropdownRef}) => {
             <div className='pt-6 w-full ml-2'>
             
             {subtypeData && subtypeData?.map(d=>(
-                <p key={d.name.english} className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?d.name.english:d.name.hindi}</p>
+                <p 
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/tags/${d.tagId}`)}
+                key={d.name.english} className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?d.name.english:d.name.hindi}</p>
             ))
             
             }

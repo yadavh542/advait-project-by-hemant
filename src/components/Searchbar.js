@@ -10,7 +10,7 @@ import { useGlobalContext } from '../context';
 
 const Searchbar = () => {
   const[allSearchOpen, setAllSearchOpen] = useState(false);
-  const{toggleBgGray,langEng,setSearchInput,searchInput,searchOnPhone,setSearchOnPhone} = useGlobalContext();
+  const{toggleBgGray,bgGray,langEng,setSearchInput,searchInput,searchOnPhone,setSearchOnPhone} = useGlobalContext();
   const dropdownRef = useRef();
   
 
@@ -70,7 +70,7 @@ const Searchbar = () => {
             <input
             value={searchInput}
             onChange={(e)=>setSearchInput(e.target.value)}
-            className='border-2 border-gray-200 px-4 py-1 outline-none md:w-64 lg:w-96'
+            className={`border-2 border-gray-200 px-4 py-1 outline-none md:w-64 lg:w-96 ${bgGray && "bg-gray-300"}`}
             type='text'
             placeholder={langEng?'Search for courses': 'कोर्स खोजें'}
             />

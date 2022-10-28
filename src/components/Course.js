@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useGlobalContext } from '../context';
 
-const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes}) => {
+const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes,idName}) => {
 
   const{langEng} = useGlobalContext();
+  const addToCartRef = useRef();
+  const enrolRef = useRef();
+
+  const handleCourseClick =(e)=>{
+    if(!addToCartRef.current.contains(e.target)){
+      window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/course/${idName}`)
+    }
+    // else if(!enrolRef.current.contains(e.target)){
+    //   window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/course/${idName}`)
+    // }
+  }
 
   return (
-    <div className='hover:bg-gray-200 rounded-md min-[320px]:w-full md:w-80 mr-8 mb-5 cursor-pointer'>
+    <div 
+    onClick={handleCourseClick}
+    className='hover:bg-gray-200 rounded-md min-[320px]:w-full md:w-80 mr-8 mb-5 cursor-pointer'>
         <div className='p-4'>
 
             
@@ -20,7 +33,18 @@ const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes}) => {
             <p className='text-gray-500 mb-2'>{langEng?'Contributions':'सहयोग राशि'}: <span><i class="bi bi-currency-rupee"></i></span>{amount}</p>
                       
             <button className='bg-blue-200 py-1 px-2 rounded-md text-gray-800 text-xs mb-2'>{langEng?"Hindi":"हिंदी"}</button>
-            <p className='text-gray-300'><span className='text-xs font-bold text-orange-500 hover:text-orange-700'>{langEng?'ADD TO CART':'कार्ट में जोड़ें'}</span>  |  <span className='text-xs font-bold text-orange-500 hover:text-orange-700'>{langEng?'ENROL':'एनरोल करें'}</span></p>
+            <p 
+            ref={addToCartRef}
+            className='text-gray-300'>
+              <span 
+              // ref={addToCartRef}
+              onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/login?page=https%3A%2F%2Facharyaprashant.org%2Fen%2Fcourses%2Fseries%2Fcourse-series-eeb9d3`)}
+              className='text-xs font-bold text-orange-500 hover:text-orange-700 z-50'>{langEng?'ADD TO CART':'कार्ट में जोड़ें'}
+              </span> &nbsp;| &nbsp; 
+              <span 
+              // ref={enrolRef}
+              onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/login?page=https%3A%2F%2Facharyaprashant.org%2Fen%2Fcourses%2Fseries%2Fcourse-series-eeb9d3`)}
+              className='text-xs font-bold text-orange-500 hover:text-orange-700'>{langEng?'ENROL':'एनरोल करें'}</span></p>
             
         </div>
         <hr/>

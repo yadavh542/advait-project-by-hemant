@@ -5,7 +5,7 @@ const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes,idName
 
   const{langEng} = useGlobalContext();
   const addToCartRef = useRef();
-  const enrolRef = useRef();
+  
 
   const handleCourseClick =(e)=>{
     if(!addToCartRef.current.contains(e.target)){
@@ -19,7 +19,7 @@ const Course = ({title,subtitle,courseHours,amount,courseNo,courseMinutes,idName
   return (
     <div 
     onClick={handleCourseClick}
-    className='hover:bg-gray-200 rounded-md min-[320px]:w-full md:w-80 mr-8 mb-5 cursor-pointer'>
+    className='hover:bg-gray-200 rounded-md min-[320px]:w-full md:w-80 md:mr-4 mb-5 cursor-pointer'>
         <div className='p-4'>
 
             

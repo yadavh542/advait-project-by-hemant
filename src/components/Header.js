@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     ArrowLeftIcon,
     ChevronRightIcon,
@@ -17,8 +17,10 @@ import {
 
 const Header = () => {
     const[details, setDetails] = useState();
-    const{langEng} = useGlobalContext();
+    const{langEng, halfText, setHalfText, toggleHalfText} = useGlobalContext();
     const shareUrl='https://acharyaprashant.org/en/courses/series/course-series-eeb9d3';
+    const phoneBackRef = useRef();
+    
 
     useEffect(()=>{
 
@@ -31,7 +33,17 @@ const Header = () => {
         fetchDetails();
     },[])
     
-    console.log(details);
+    //console.log(details);
+
+    useEffect(()=>{
+        if(window.innerWidth<568){
+            setHalfText(true);
+        }
+    },[window.innerWidth])
+
+    // const handleHalfText = () =>{
+    //     to
+    // }
 
   return (
     <div className='min-[320px]:mx-4 md:mx-7'>
@@ -47,6 +59,7 @@ const Header = () => {
 
         <div className='flex items-center mt-4'>
         <ArrowLeftIcon 
+        ref={phoneBackRef}
         onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
         className='text-orange-400 h-6 md:hidden font-bold cursor-pointer'/>
         <h1 className='text-2xl font-bold ml-2'>{details?.details.title}</h1>
@@ -61,7 +74,9 @@ const Header = () => {
             
             <div className='my-5 min-[320px]:mx-4'> 
             <h2 className='font-semibold mb-4 text-lg'>{details?.details.subtitle}</h2>
-            <p className='text-gray-600 text-md leading-8'>{details?.details.description}</p>
+            {halfText?<p className='text-gray-600 text-md leading-8'>{details?.details.description.slice(0,155)}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer'>...और पढ़ें</span></p>:
+            <p className='text-gray-600 text-md leading-8'>{details?.details.description}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer'>...कम दिखाएँ</span></p>
+            }
             </div>
         </div>
 

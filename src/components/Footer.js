@@ -34,9 +34,9 @@ const Footer = () => {
 
   return (
     <div className="bg-slate-900 pb-16">
-      <div className="p-8 text-white mb-10 grid min-[320px]:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+      <div className="p-8 text-white min-[320px]:mb-10 lg:mb-4 grid min-[320px]:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'LIVE EVENTS':'सजीव सत्र'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'LIVE EVENTS':'सजीव सत्र'}</h1>
           <br />
           <p 
             onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/camps`)}
@@ -55,7 +55,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'WISDOM CONTENT':'बोध साहित्य'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'WISDOM CONTENT':'बोध साहित्य'}</h1>
           <br />
           <p 
           onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
@@ -70,7 +70,7 @@ const Footer = () => {
           className="hover:text-orange-400 cursor-pointer">{langEng?'AP Circle':'ए.पी. सर्किल'}</p>
         </div>
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'MORE':'अधिक जाने'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'MORE':'अधिक जाने'}</h1>
           <br />
           <p 
           onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/ap-intro`)}
@@ -97,7 +97,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'SOCIAL MEDIA':'सोशल मीडिया'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'SOCIAL MEDIA':'सोशल मीडिया'}</h1>
           <br />
           <p className="hover:text-orange-400 cursor-pointer mb-2">
             {langEng?'For English':'अँग्रेजी के लिये'}
@@ -135,7 +135,7 @@ const Footer = () => {
           className="bi bi-instagram cursor-pointer hover:text-orange-400 mr-1.5"></i>
         </div>
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'DOWNLOAD APP':'डाउनलोड ऐप'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'DOWNLOAD APP':'डाउनलोड ऐप'}</h1>
           <br />
           <div className="flex">
             <img
@@ -158,7 +158,7 @@ const Footer = () => {
           />
         </div>
         <div>
-          <h1 className="font-bold text-lg min-[320px]:mt-8">{langEng?'CONTACT US':'सम्पर्क करें'}</h1>
+          <h1 className="font-bold text-lg min-[320px]:mt-8 lg:mt-4">{langEng?'CONTACT US':'सम्पर्क करें'}</h1>
           <br />
 
           {/* Send Email to */}

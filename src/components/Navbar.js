@@ -103,7 +103,7 @@ const Navbar = () => {
                 {langBoxOpen && 
                 <div 
                 ref={menuRef}
-                className='h-24 w-21 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center'>
+                className='h-24 w-21 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center z-50'>
                     <p 
                     onClick={handleEng}
                     className={`py-2 px-5 hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>English</p>
@@ -119,7 +119,7 @@ const Navbar = () => {
 
                     <button 
                     onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/contribute`)}
-                    className='text-xs rounded-md px-1 py-0.5 md:hidden border-2'>{langEng?'Donate':'योगदान करें'}</button>
+                    className='text-xs rounded-md px-1 py-0.5 md:hidden border-2 mx-2'>{langEng?'Donate':'योगदान करें'}</button>
 
                     <Bars3Icon 
                     onClick={handleMenuOpen}
@@ -134,7 +134,7 @@ const Navbar = () => {
                 {/* Right Side Menu Expand Div  */}
 
                 {menuOpen && 
-                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex'>
+                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex z-50'>
                     <XMarkIcon 
                     onClick={handleMenuOpen} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>

@@ -60,7 +60,7 @@ const Dropdown = ({dropdownRef}) => {
   return (
     <div 
     ref={dropdownRef}
-    className={`h-[420px] ${openSubtype?"w-[510px]":"w-[270px]"} absolute left-[124px] top-[100px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex justify-start`}>
+    className={`h-[420px] ${openSubtype?"w-[510px]":"w-[270px]"} absolute left-[124px] top-[55px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex justify-start`}>
         
         {/* Left Dropdown */}
         <div className='h-[420px] w-[270px]'> 

@@ -45,7 +45,7 @@ const Searchbar = () => {
   }
 
   return (
-    <div className='shadow flex justify-between py-2 items-center z-50'>
+    <div className={`sticky top-0 z-30 shadow flex justify-between py-2 items-center ${bgGray?'bg-gray-300':'bg-white'}`}>
         {/* Searrch Bar Left */}
         <div className='flex justify-center items-center'>
             {!searchOnPhone && <img
@@ -117,7 +117,7 @@ const Searchbar = () => {
           <MagnifyingGlassIcon onClick={()=>setSearchOnPhone(true)} className='h-4 font-bold text-gray-800 md:hidden mr-2'/>
           <button 
           onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/login?page=https%3A%2F%2Facharyaprashant.org%2Fhi%2Fcourses%2Fseries%2Fcourse-series-eeb9d3`)}
-          className='bg-orange-400 hover:bg-orange-600 rounded-md text-sm font-bold text-white px-4 py-2 min-[320px]:mr-4 md:mr-7'>{langEng?'Login':'लॉगिन करें'}
+          className='bg-orange-600 hover:bg-orange-700 rounded-md text-sm font-bold text-white px-2 py-1 min-[320px]:mr-4 md:mr-7'>{langEng?'Login':'लॉगिन करें'}
 
           </button>    
         </div>}

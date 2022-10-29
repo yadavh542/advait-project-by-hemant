@@ -36,14 +36,14 @@ const Header = () => {
     //console.log(details);
 
     useEffect(()=>{
-        if(window.innerWidth<568){
+        if(window.innerWidth<600){
             setHalfText(true);
         }
+        // console.log(window.innerWidth);
     },[window.innerWidth])
 
-    // const handleHalfText = () =>{
-    //     to
-    // }
+   
+    
 
   return (
     <div className='min-[320px]:mx-4 md:mx-7'>

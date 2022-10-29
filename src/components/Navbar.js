@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+//import "../App.css";
 import {
     PhoneIcon,
     Bars3Icon,
@@ -13,19 +14,20 @@ import { useGlobalContext } from '../context';
 const Navbar = () => {
     const[langBoxOpen, setLangBoxOpen] = useState(false);
     const[menuOpen, setMenuOpen] = useState(false);
-    const{toggleBgGray} = useGlobalContext();
+    const{toggleBgGray,setBgGray} = useGlobalContext();
     const{langEng,langHindi,setLangHindi,setLangEng} = useGlobalContext();
     const menuRef = useRef();
+    const langRef = useRef();
     
 
     // Click Outside to Close Popup Function
 
     useEffect(()=>{
         let handler=(e)=>{
-            if(!menuRef.current.contains(e.target)){
+            if( (menuOpen && !menuRef.current.contains(e.target)) || (langBoxOpen && !langRef.current.contains(e.target))){
                 setMenuOpen(false);
                 setLangBoxOpen(false);
-                toggleBgGray();
+                setBgGray(false);
             }
             
         };
@@ -36,8 +38,8 @@ const Navbar = () => {
     })
 
     const handleMenuOpen=(e)=>{
-        setMenuOpen(!menuOpen);
-        toggleBgGray();
+        setMenuOpen(true);
+        setBgGray(true);
     }
     const handleLangBoxOpen=(e)=>{
         setLangBoxOpen(!langBoxOpen);
@@ -90,7 +92,9 @@ const Navbar = () => {
         <div className='items-center justify-center flex'>
             <ul className='text-white min-[320px]:mr-4 md:mr-7 flex justify-center items-center'>
 
+                {/* select language */}
                 <div 
+                ref={langRef}
                 onClick={handleLangBoxOpen}
                 className='flex px-2 justify-center items-center'>
                     <button className='rounded-md border-2 text-xs px-0.5 py-0.2 mr-1'>{langEng?'EN':'HI'}</button>
@@ -102,7 +106,7 @@ const Navbar = () => {
                 {/* Language Popup dropdown */}
                 {langBoxOpen && 
                 <div 
-                ref={menuRef}
+                ref={langRef}
                 className='h-24 w-21 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center z-50'>
                     <p 
                     onClick={handleEng}
@@ -131,18 +135,20 @@ const Navbar = () => {
                 onClick={handleMenuOpen}
                 className='px-2 text-sm cursor-pointer min-[320px]:hidden md:flex'>{langEng?'Menu':'मेन्यू'}</li>
 
-                {/* Right Side Menu Expand Div  */}
+                {/* Menu Right Sidebar  */}
 
-                {menuOpen && 
-                    <div className='h-screen min-[320px]:w-full sm:w-[380px] fixed right-0 top-0 overflow-x-hidden transition ease-in duration-300 flex z-50'>
+                
+                    <div className={`h-screen ${menuOpen?"min-[320px]:w-full sm:w-[380px]":'w-0'} transition-all ease-in-out duration-700 fixed right-0 top-0 overflow-x-hidden flex z-50 `}>
                     <XMarkIcon 
-                    onClick={handleMenuOpen} 
+                    onClick={()=>{setMenuOpen(false);setBgGray(false)}} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>
                     
                     {/* Menu Bar Content */}
 
-                    <div ref={menuRef} className=' bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
-                     shadow-md pt-8 px-2 transition duration-500 overflow-y-auto overflow-x-hidden'>
+                    <div ref={menuRef} className= {`bg-white text-black h-screen min-[320px]:w-full sm:w-[380px]
+                     shadow-md pt-8 px-2 overflow-y-auto overflow-x-hidden
+                     `}
+                     >
                         
                         <div 
                         onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/login?page=https%3A%2F%2Facharyaprashant.org%2Fhi%2Fcourses%2Fseries%2Fcourse-series-eeb9d3`)}
@@ -182,7 +188,7 @@ const Navbar = () => {
                     </div>
 
                     </div>
-                }
+                
 
             </ul>
         </div>

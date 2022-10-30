@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     
     ChevronRightIcon,
@@ -8,9 +8,12 @@ import { useGlobalContext } from '../context';
 
 const Dropdown = ({dropdownRef}) => {
     const[dropdownData, setDropdownData] = useState();
-    const[openSubtype, setOpenSubtype] = useState(false);
-    const[subtypeData, setSubtypeData] = useState([]);
-    const{langEng} = useGlobalContext();
+   
+    
+    
+    const{langEng,allSearchOpen, subtypeData, setSubtypeData,
+        openSubtype, setOpenSubtype,
+    } = useGlobalContext();
     
     
 
@@ -23,36 +26,45 @@ const Dropdown = ({dropdownRef}) => {
         fetchdropdownData();
     },[])
 
-    // const handleMouseLeave=(e)=>{
-        
-    //     setSubtypeData([]);
-    // }
+    
 
     const handleSelectedDropdown= (tag)=>{
-            setOpenSubtype(true);
-
+            
+            //setOpenSubtype(true);
             let selectedDropdown = [];
             selectedDropdown.push(tag);
-           
+  
 
             if(selectedDropdown[0]==="Vedant - Upanishads"){
-                setSubtypeData(dropdownData[1].slice(0,5))
+                setSubtypeData(dropdownData[1].slice(0,5));
+                setOpenSubtype(true);
             }else if(selectedDropdown[0]==="Other Scriptures"){
-                setSubtypeData(dropdownData[1].slice(5,25))
+                setSubtypeData(dropdownData[1].slice(5,25));
+                setOpenSubtype(true);
             }else if(selectedDropdown[0]==="Saints and Masters"){
-                setSubtypeData(dropdownData[1].slice(25,46))
+                setSubtypeData(dropdownData[1].slice(25,46));
+                setOpenSubtype(true);
             }else if(selectedDropdown[0]==="Other streams"){
-                setSubtypeData(dropdownData[1].slice(46,53))
+                setSubtypeData(dropdownData[1].slice(46,53));
+                setOpenSubtype(true);
             }else if(selectedDropdown[0]==="Life Questions"){
-                setSubtypeData(dropdownData[1].slice(53,64))
+                setSubtypeData(dropdownData[1].slice(53,64));
+                setOpenSubtype(true);
             }else{
-                setSubtypeData([])
+                //setSubtypeData([])
+                setOpenSubtype(false);
             }
             
         
         //console.log(selectedDropdown);
     }
 
+
+    // const handleMouseLeaveFromDropdown = (e)=>{
+    //     if(!subtypeData){
+    //         setOpenSubtype(false)    
+    //     }
+    // }
     
 
     
@@ -60,22 +72,27 @@ const Dropdown = ({dropdownRef}) => {
   return (
     <div 
     ref={dropdownRef}
-    className={`h-[420px] ${openSubtype?"w-[510px]":"w-[270px]"} absolute left-[124px] top-[55px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex justify-start`}>
+    onMouseLeave={(e)=>setOpenSubtype(false)}
+    className={`${allSearchOpen?`h-[420px] top-[55px] ${openSubtype?"w-[510px] divide-x":"w-[270px]"} ` :'h-0 -top-[555px]'} duration-[900ms] 
+    absolute left-[124px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex justify-start `}>
         
         {/* Left Dropdown */}
         <div className='h-[420px] w-[270px]'> 
-            <div className='pt-6 pl-4 w-[270px]'>
+            <div className='pt-6 w-[270px]'>
             <p 
+            onMouseEnter={()=>setOpenSubtype(false)}
             onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses`)}
-            className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?'All':'सभी'}</p>
+            className='pl-6 pr-2 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?'All':'सभी'}</p>
 
             {dropdownData && dropdownData[0]?.map(d=>(
                 <div 
-                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/tags/${d.tagId}`)}
-                className='text-gray-500 px-4 py-2 hover:bg-gray-100 hover:text-orange-500 cursor-pointer flex justify-between'> 
-                <p 
                 key={d.tagId}
+                
                 onMouseEnter={e=>handleSelectedDropdown(d.name.english)} 
+                
+                onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/tags/${d.tagId}`)}
+                className='text-gray-500 pl-6 pr-2 py-2 hover:bg-gray-100 hover:text-orange-500 cursor-pointer flex justify-between'> 
+                <p 
                 className='font-semibold'>{langEng?d.name.english:d.name.hindi}</p>
                 {d.name.english==="Vedant - Bhagavad Gita"?"" : <ChevronRightIcon className='h-4'/>}
                 </div>
@@ -87,13 +104,19 @@ const Dropdown = ({dropdownRef}) => {
 
         {/* Right Dropdown */}
 
-        <div className='h-[420px] overflow-y-auto overflow-x-hidden w-[300px]'>
-            <div className='pt-6 w-full ml-2'>
+
+        <div 
+        
+        className={`h-[420px] overflow-y-auto overflow-x-hidden ${openSubtype?'w-[300px]':'w-0'}`}>
+            <div className='py-4 w-full'>
             
             {subtypeData && subtypeData?.map(d=>(
                 <p 
+                // onMouseEnter={()=>setOpenSubtype(true)}
+                // onMouseLeave={()=>setOpenSubtype(false)}
                 onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/courses/tags/${d.tagId}`)}
-                key={d.name.english} className='pl-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?d.name.english:d.name.hindi}</p>
+                key={d.name.english} 
+                className='pl-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-500 font-semibold hover:text-orange-500'>{langEng?d.name.english:d.name.hindi}</p>
             ))
             
             }

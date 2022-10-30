@@ -50,13 +50,13 @@ const Navbar = () => {
         setLangHindi(true);
         setLangEng(false);
         setLangBoxOpen(false);
-        toggleBgGray();
+        setBgGray(false);
     }
     const handleEng=(e)=>{
         setLangEng(true);
         setLangHindi(false);
         setLangBoxOpen(false);
-        toggleBgGray();
+        setBgGray(false);
     }
 
   return (
@@ -103,18 +103,21 @@ const Navbar = () => {
                     />
                 </div>
 
-                {/* Language Popup dropdown */}
-                {langBoxOpen && 
+                {/* Language Popup Box */}
+                
                 <div 
                 ref={langRef}
-                className='h-24 w-21 absolute right-[140px] min-[320px]:top-9 md:top-10 rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center z-50'>
+                className={`${langBoxOpen?'h-24 w-21':'h-0'} duration-[700ms] ease-in absolute ${langBoxOpen?'min-[320px]:top-9 md:top-10':'-top-10 '} min-[320px]:right-[138px] lg:right-[135px] rounded-md bg-white font-semibold border-1 border-gray-200 shadow-md flex flex-col justify-center items-center z-50`}>
                     <p 
                     onClick={handleEng}
-                    className={`py-2 px-5 hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>English</p>
+                    className={`${langBoxOpen?'py-2 text-base':'py-0 text-sm'} px-5 duration-[700ms]  hover:bg-gray-200 cursor-pointer ${langEng? "text-orange-500":"text-black"}`}>
+                        <span className='px-[3px]'>English</span>
+                    </p>
                     <p 
                     onClick={handleHindi}
-                    className={`px-6 py-2 hover:bg-gray-200 cursor-pointer ${langHindi? "text-orange-500":"text-black"}`}>हिंदी &ensp;</p>
-                </div>}
+                    className={`${langBoxOpen?'py-2 text-base':'py-0 text-sm'} px-5 duration-[700ms] hover:bg-gray-200 cursor-pointer ${langHindi? "text-orange-500":"text-black"}`}><span className='px-[6px]'>हिंदी&emsp;</span></p>
+                </div>
+
 
                     <PhoneIcon
                     onClick={()=>window.location.replace(`https://acharyaprashant.org/${langEng?'en':'hi'}/enquiry`)}
@@ -138,7 +141,7 @@ const Navbar = () => {
                 {/* Menu Right Sidebar  */}
 
                 
-                    <div className={`h-screen ${menuOpen?"min-[320px]:w-full sm:w-[380px]":'w-0'} transition-all ease-in-out duration-700 fixed right-0 top-0 overflow-x-hidden flex z-50 `}>
+                    <div className={`h-screen ${menuOpen?"min-[320px]:w-full sm:w-[380px]":'w-0'} transition-all ease duration-[800ms] fixed right-0 top-0 overflow-x-hidden flex z-50 `}>
                     <XMarkIcon 
                     onClick={()=>{setMenuOpen(false);setBgGray(false)}} 
                     className="p-2 rounded-full bg-white text-black hover:text-orange-500 font-bold z-50 h-8 cursor-pointer"/>

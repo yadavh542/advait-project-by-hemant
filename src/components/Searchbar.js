@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, } from 'react';
 import {
     MagnifyingGlassIcon,
     ChevronDownIcon,
@@ -9,8 +9,10 @@ import Dropdown from './Dropdown';
 import { useGlobalContext } from '../context';
 
 const Searchbar = () => {
-  const[allSearchOpen, setAllSearchOpen] = useState(false);
-  const{toggleBgGray,bgGray,langEng,setSearchInput,searchInput,searchOnPhone,setSearchOnPhone} = useGlobalContext();
+  
+  const{toggleBgGray,bgGray,langEng,setSearchInput,searchInput,searchOnPhone,setSearchOnPhone,
+    allSearchOpen, setAllSearchOpen,setBgGray, setSubtypeData, setOpenSubtype,
+  } = useGlobalContext();
   const dropdownRef = useRef();
   
 
@@ -18,8 +20,9 @@ const Searchbar = () => {
     let handler=(e)=>{
         if(!dropdownRef.current.contains(e.target)){
             setAllSearchOpen(false);
-            
-            toggleBgGray();
+            setSubtypeData(false);
+            setOpenSubtype(false);
+            setBgGray(false);
         }
         
     };
@@ -109,7 +112,7 @@ const Searchbar = () => {
         </div>
 
         {/* Dropdown open */}
-        {allSearchOpen && <Dropdown dropdownRef={dropdownRef}/>}
+         <Dropdown dropdownRef={dropdownRef}/>
 
         {/* Search Bar Right - Login*/}
         {!searchOnPhone && 

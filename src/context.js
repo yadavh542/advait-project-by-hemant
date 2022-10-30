@@ -29,6 +29,9 @@ const AppProvider = ({children}) => {
     const [searchInput, setSearchInput] = useState("");
     const[searchOnPhone,setSearchOnPhone] = useState(false);
     const [halfText, setHalfText] = useState(false);
+    const[allSearchOpen, setAllSearchOpen] = useState(false);
+    const[subtypeData, setSubtypeData] = useState([]);
+    const[openSubtype, setOpenSubtype] = useState(false);
 
     // useEffect(() => {
     //     localStorage.setItem("mode",JSON.stringify(dark));
@@ -49,7 +52,9 @@ const AppProvider = ({children}) => {
     searchInput,setSearchInput,
     searchOnPhone,setSearchOnPhone,
     halfText, setHalfText, toggleHalfText,
-
+    allSearchOpen, setAllSearchOpen,
+    subtypeData, setSubtypeData,
+    openSubtype, setOpenSubtype,
     }}>
     {children}
     </AppContext.Provider>

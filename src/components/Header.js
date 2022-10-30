@@ -40,7 +40,7 @@ const Header = () => {
             setHalfText(true);
         }
         // console.log(window.innerWidth);
-    },[window.innerWidth])
+    },[])
 
    
     
@@ -74,8 +74,8 @@ const Header = () => {
             
             <div className='my-5 min-[320px]:mx-4'> 
             <h2 className='font-semibold mb-4 text-lg'>{details?.details.subtitle}</h2>
-            {halfText?<p className='text-gray-600 text-md leading-8'>{details?.details.description.slice(0,155)}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer'>...और पढ़ें</span></p>:
-            <p className='text-gray-600 text-md leading-8'>{details?.details.description}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer'>...कम दिखाएँ</span></p>
+            {halfText?<p className='text-gray-600 text-md leading-8'>{details?.details.description.slice(0,155)}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer '>...और पढ़ें</span></p>:
+            <p className='text-gray-600 text-md leading-8 duration-700'>{details?.details.description}<span onClick={()=>toggleHalfText()} className='text-orange-500 font-semibold cursor-pointer'>...कम दिखाएँ</span></p>
             }
             </div>
         </div>
